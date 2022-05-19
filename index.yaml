@@ -1,0 +1,9 @@
+name: ibm-db2-warehouse
+type: terraform
+description: Module to provision db2-warehouse on ibm
+tags:
+  - tools
+  - devops
+versions: []
+cloudProvider: ibm
+id: github.com/cloud-native-toolkit/terraform-ibm-db2-warehouse
