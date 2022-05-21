@@ -4,6 +4,79 @@ description: Module to provision db2-warehouse on ibm
 tags:
   - tools
   - devops
-versions: []
+versions:
+  - platforms: []
+    providers:
+      - name: ibm
+        source: ibm-cloud/ibm
+    dependencies:
+      - id: resource_group
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
+            version: '>= 2.1.0'
+    variables:
+      - name: resource_group_name
+        type: string
+        description: Resource group where the cluster has been provisioned.
+      - name: resource_location
+        type: string
+        description: Geographic location of the resource (au-syd, eu-de, eu-gb, us-south)
+      - name: tags
+        type: list(string)
+        description: Tags that should be applied to the service
+        default: []
+      - name: name_prefix
+        type: string
+        description: >-
+          The prefix name for the service. If not provided it will default to
+          the resource group name
+        default: ''
+      - name: plan
+        type: string
+        description: >-
+          The type of plan the service instance should run under (flex-one,
+          flex)
+        default: flex-one
+      - name: role
+        type: string
+        description: The role of the generated credential (Manager, Writer)
+        default: Manager
+      - name: backup_count
+        type: number
+        description: The number of backups to take of the database
+        default: '7'
+      - name: oracle_compatible
+        type: bool
+        description: Flag indicating database is oracle compatible
+        default: false
+    version: v1.0.0
+    outputs:
+      - name: id
+        description: The id of the service instance
+      - name: crn
+        description: The crn of the service instance
+      - name: name
+        description: The name of the service instance
+      - name: location
+        description: The location of the service instance
+      - name: service
+        description: The service name for the service instance
+      - name: label
+        description: The label for the service instance
+      - name: type
+        description: The sub-type for the service instance
+      - name: host
+        description: The hostname for the service instance
+      - name: port
+        description: The port for the service instance
+      - name: database_name
+        description: The database name for the service instance
+      - name: username
+        description: The username for the service instance
+      - name: password
+        description: The password for the service instance
 cloudProvider: ibm
 id: github.com/cloud-native-toolkit/terraform-ibm-db2-warehouse
+interfaces:
+  - github.com/cloud-native-toolkit/automation-modules#db2-warehouse
+  - github.com/cloud-native-toolkit/automation-modules#ibm-service
