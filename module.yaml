@@ -1,10 +1,14 @@
 name: ibm-db2-warehouse
 type: terraform
-description: Module to provision db2-warehouse on ibm
+description: Module to provision db2-warehouse on IBM Cloud
+cloudProvider: ibm
 tags:
-  - tools
+  - db2 warehouse
+  - ibmcloud
+  - service
   - devops
 interfaces:
+  - github.com/cloud-native-toolkit/automation-modules#database
   - github.com/cloud-native-toolkit/automation-modules#db2-warehouse
   - github.com/cloud-native-toolkit/automation-modules#ibm-service
 versions:
@@ -17,5 +21,11 @@ versions:
       refs:
         - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
           version: ">= 2.1.0"
-    variables: []
-cloudProvider: ibm
+    variables:
+      - name: resource_group_name
+        moduleRef:
+          id: resource_group
+          output: name
+      - name: resource_location
+        alias: region
+        scope: global
