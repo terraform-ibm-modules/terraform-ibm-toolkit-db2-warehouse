@@ -12,12 +12,6 @@ Beyond those files, any other content can be added and organized however you see
 that contains shell scripts executed by a `local-exec` `null_resource` in the terraform module. The contents will depend on what your
 module does and how it does it.
 
-## Instructions for creating a new module
-
-1. Update the title and description in the README to match the module you are creating
-2. Fill out the remaining sections in the README template as appropriate
-3. Implement your logic in the in the main.tf, variables.tf, and outputs.tf
-4. Use releases/tags to manage release versions of your module
 
 ## Module overview
 
